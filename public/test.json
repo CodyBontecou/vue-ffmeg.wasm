@@ -1,0 +1,1130 @@
+{
+  "segments": [],
+  "word_segments": [
+    {
+      "word": "And",
+      "start": 0.0,
+      "end": 0.22
+    },
+    {
+      "word": "so",
+      "start": 0.22,
+      "end": 0.74
+    },
+    {
+      "word": "things",
+      "start": 0.74,
+      "end": 1.14
+    },
+    {
+      "word": "like",
+      "start": 1.14,
+      "end": 1.36
+    },
+    {
+      "word": "Dev",
+      "start": 1.36,
+      "end": 1.5
+    },
+    {
+      "word": "Velocity",
+      "start": 1.5,
+      "end": 1.88
+    },
+    {
+      "word": "are",
+      "start": 1.88,
+      "end": 2.06
+    },
+    {
+      "word": "kind",
+      "start": 2.06,
+      "end": 2.14
+    },
+    {
+      "word": "of",
+      "start": 2.14,
+      "end": 2.32
+    },
+    {
+      "word": "step",
+      "start": 2.32,
+      "end": 2.44
+    },
+    {
+      "word": "in",
+      "start": 2.44,
+      "end": 2.58
+    },
+    {
+      "word": "the",
+      "start": 2.58,
+      "end": 2.72
+    },
+    {
+      "word": "direction.",
+      "start": 2.72,
+      "end": 2.92
+    },
+    {
+      "word": "It's",
+      "start": 3.2,
+      "end": 3.74
+    },
+    {
+      "word": "a",
+      "start": 3.74,
+      "end": 3.94
+    },
+    {
+      "word": "step",
+      "start": 3.94,
+      "end": 4.16
+    },
+    {
+      "word": "towards",
+      "start": 4.16,
+      "end": 4.56
+    },
+    {
+      "word": "developer",
+      "start": 4.56,
+      "end": 4.98
+    },
+    {
+      "word": "productivity",
+      "start": 4.98,
+      "end": 5.48
+    },
+    {
+      "word": "and",
+      "start": 5.48,
+      "end": 5.9
+    },
+    {
+      "word": "DevEx",
+      "start": 5.9,
+      "end": 6.46
+    },
+    {
+      "word": "and",
+      "start": 6.46,
+      "end": 7.0
+    },
+    {
+      "word": "platform",
+      "start": 7.0,
+      "end": 7.36
+    },
+    {
+      "word": "engineering",
+      "start": 7.36,
+      "end": 7.84
+    },
+    {
+      "word": "and",
+      "start": 7.84,
+      "end": 8.04
+    },
+    {
+      "word": "those",
+      "start": 8.04,
+      "end": 8.24
+    },
+    {
+      "word": "kinds",
+      "start": 8.24,
+      "end": 8.48
+    },
+    {
+      "word": "of",
+      "start": 8.48,
+      "end": 8.64
+    },
+    {
+      "word": "things",
+      "start": 8.64,
+      "end": 8.84
+    },
+    {
+      "word": "of",
+      "start": 8.84,
+      "end": 9.0
+    },
+    {
+      "word": "like,",
+      "start": 9.0,
+      "end": 9.28
+    },
+    {
+      "word": "let's",
+      "start": 9.44,
+      "end": 9.96
+    },
+    {
+      "word": "take",
+      "start": 9.96,
+      "end": 10.3
+    },
+    {
+      "word": "this",
+      "start": 10.3,
+      "end": 10.64
+    },
+    {
+      "word": "area",
+      "start": 10.64,
+      "end": 11.06
+    },
+    {
+      "word": "seriously.",
+      "start": 11.06,
+      "end": 11.8
+    },
+    {
+      "word": "Our",
+      "start": 12.24,
+      "end": 12.5
+    },
+    {
+      "word": "development",
+      "start": 12.5,
+      "end": 12.82
+    },
+    {
+      "word": "environments",
+      "start": 12.82,
+      "end": 13.24
+    },
+    {
+      "word": "are",
+      "start": 13.24,
+      "end": 13.68
+    },
+    {
+      "word": "important.",
+      "start": 13.68,
+      "end": 14.18
+    },
+    {
+      "word": "Our",
+      "start": 14.36,
+      "end": 14.54
+    },
+    {
+      "word": "testing",
+      "start": 14.54,
+      "end": 14.92
+    },
+    {
+      "word": "environments",
+      "start": 14.92,
+      "end": 15.28
+    },
+    {
+      "word": "are",
+      "start": 15.28,
+      "end": 15.58
+    },
+    {
+      "word": "important.",
+      "start": 15.58,
+      "end": 16.12
+    },
+    {
+      "word": "Staging,",
+      "start": 16.52,
+      "end": 17.08
+    },
+    {
+      "word": "CI,",
+      "start": 17.32,
+      "end": 17.64
+    },
+    {
+      "word": "all",
+      "start": 17.74,
+      "end": 18.0
+    },
+    {
+      "word": "of",
+      "start": 18.0,
+      "end": 18.18
+    },
+    {
+      "word": "those",
+      "start": 18.18,
+      "end": 18.38
+    },
+    {
+      "word": "things",
+      "start": 18.38,
+      "end": 18.66
+    },
+    {
+      "word": "should",
+      "start": 18.66,
+      "end": 19.02
+    },
+    {
+      "word": "be",
+      "start": 19.02,
+      "end": 19.42
+    },
+    {
+      "word": "monitored",
+      "start": 19.42,
+      "end": 20.02
+    },
+    {
+      "word": "the",
+      "start": 20.02,
+      "end": 20.66
+    },
+    {
+      "word": "same",
+      "start": 20.66,
+      "end": 20.86
+    },
+    {
+      "word": "way",
+      "start": 20.86,
+      "end": 20.98
+    },
+    {
+      "word": "that",
+      "start": 20.98,
+      "end": 21.16
+    },
+    {
+      "word": "we",
+      "start": 21.16,
+      "end": 21.32
+    },
+    {
+      "word": "would",
+      "start": 21.32,
+      "end": 21.4
+    },
+    {
+      "word": "with",
+      "start": 21.4,
+      "end": 21.54
+    },
+    {
+      "word": "a",
+      "start": 21.54,
+      "end": 21.72
+    },
+    {
+      "word": "production",
+      "start": 21.72,
+      "end": 22.02
+    },
+    {
+      "word": "environment.",
+      "start": 22.02,
+      "end": 22.4
+    },
+    {
+      "word": "And",
+      "start": 22.58,
+      "end": 22.86
+    },
+    {
+      "word": "we",
+      "start": 22.86,
+      "end": 23.36
+    },
+    {
+      "word": "should",
+      "start": 23.36,
+      "end": 23.48
+    },
+    {
+      "word": "be",
+      "start": 23.48,
+      "end": 23.7
+    },
+    {
+      "word": "investing",
+      "start": 23.7,
+      "end": 24.0
+    },
+    {
+      "word": "time",
+      "start": 24.0,
+      "end": 24.28
+    },
+    {
+      "word": "in",
+      "start": 24.28,
+      "end": 24.58
+    },
+    {
+      "word": "improving",
+      "start": 24.58,
+      "end": 24.94
+    },
+    {
+      "word": "those",
+      "start": 24.94,
+      "end": 25.32
+    },
+    {
+      "word": "things",
+      "start": 25.32,
+      "end": 25.76
+    },
+    {
+      "word": "rather",
+      "start": 25.76,
+      "end": 26.26
+    },
+    {
+      "word": "than",
+      "start": 26.26,
+      "end": 26.44
+    },
+    {
+      "word": "just",
+      "start": 26.44,
+      "end": 26.68
+    },
+    {
+      "word": "going,",
+      "start": 26.68,
+      "end": 26.88
+    },
+    {
+      "word": "well,",
+      "start": 26.88,
+      "end": 27.22
+    },
+    {
+      "word": "you",
+      "start": 27.22,
+      "end": 27.32
+    },
+    {
+      "word": "know,",
+      "start": 27.32,
+      "end": 27.46
+    },
+    {
+      "word": "the",
+      "start": 27.48,
+      "end": 27.58
+    },
+    {
+      "word": "build",
+      "start": 27.58,
+      "end": 27.76
+    },
+    {
+      "word": "takes",
+      "start": 27.76,
+      "end": 28.0
+    },
+    {
+      "word": "10",
+      "start": 28.0,
+      "end": 28.24
+    },
+    {
+      "word": "minutes",
+      "start": 28.24,
+      "end": 28.52
+    },
+    {
+      "word": "and",
+      "start": 28.52,
+      "end": 28.64
+    },
+    {
+      "word": "it",
+      "start": 28.64,
+      "end": 28.82
+    },
+    {
+      "word": "is",
+      "start": 28.82,
+      "end": 28.96
+    },
+    {
+      "word": "what",
+      "start": 28.96,
+      "end": 29.08
+    },
+    {
+      "word": "it",
+      "start": 29.08,
+      "end": 29.24
+    },
+    {
+      "word": "is.",
+      "start": 29.24,
+      "end": 29.479999999999997
+    },
+    {
+      "word": "Well,",
+      "start": 30.020000000000003,
+      "end": 30.5
+    },
+    {
+      "word": "but",
+      "start": 30.96,
+      "end": 31.08
+    },
+    {
+      "word": "those",
+      "start": 31.08,
+      "end": 31.46
+    },
+    {
+      "word": "things",
+      "start": 31.46,
+      "end": 31.96
+    },
+    {
+      "word": "are",
+      "start": 31.96,
+      "end": 32.4
+    },
+    {
+      "word": "not",
+      "start": 32.4,
+      "end": 32.68
+    },
+    {
+      "word": "what",
+      "start": 32.68,
+      "end": 32.9
+    },
+    {
+      "word": "the",
+      "start": 32.9,
+      "end": 33.24
+    },
+    {
+      "word": "customer",
+      "start": 33.24,
+      "end": 33.46
+    },
+    {
+      "word": "is",
+      "start": 33.46,
+      "end": 33.72
+    },
+    {
+      "word": "paying",
+      "start": 33.72,
+      "end": 33.86
+    },
+    {
+      "word": "for.",
+      "start": 33.86,
+      "end": 34.12
+    },
+    {
+      "word": "The",
+      "start": 34.22,
+      "end": 34.34
+    },
+    {
+      "word": "customer",
+      "start": 34.34,
+      "end": 34.64
+    },
+    {
+      "word": "is",
+      "start": 34.64,
+      "end": 34.86
+    },
+    {
+      "word": "paying",
+      "start": 34.86,
+      "end": 34.98
+    },
+    {
+      "word": "for",
+      "start": 34.98,
+      "end": 35.18
+    },
+    {
+      "word": "that",
+      "start": 35.18,
+      "end": 35.48
+    },
+    {
+      "word": "code",
+      "start": 35.48,
+      "end": 35.72
+    },
+    {
+      "word": "that",
+      "start": 35.72,
+      "end": 35.9
+    },
+    {
+      "word": "we're",
+      "start": 35.9,
+      "end": 36.12
+    },
+    {
+      "word": "working",
+      "start": 36.12,
+      "end": 36.42
+    },
+    {
+      "word": "on.",
+      "start": 36.42,
+      "end": 36.68
+    },
+    {
+      "word": "So",
+      "start": 37.1,
+      "end": 37.14
+    },
+    {
+      "word": "those",
+      "start": 37.14,
+      "end": 37.38
+    },
+    {
+      "word": "things",
+      "start": 37.38,
+      "end": 37.58
+    },
+    {
+      "word": "are",
+      "start": 37.58,
+      "end": 37.9
+    },
+    {
+      "word": "secondary.",
+      "start": 37.9,
+      "end": 38.52
+    },
+    {
+      "word": "And",
+      "start": 39.42,
+      "end": 39.42
+    },
+    {
+      "word": "but",
+      "start": 39.42,
+      "end": 39.48
+    },
+    {
+      "word": "that's",
+      "start": 39.48,
+      "end": 39.76
+    },
+    {
+      "word": "why",
+      "start": 39.76,
+      "end": 39.96
+    },
+    {
+      "word": "Dev",
+      "start": 39.96,
+      "end": 40.12
+    },
+    {
+      "word": "Velocity",
+      "start": 40.12,
+      "end": 40.38
+    },
+    {
+      "word": "is",
+      "start": 40.38,
+      "end": 40.48
+    },
+    {
+      "word": "kind",
+      "start": 40.48,
+      "end": 40.78
+    },
+    {
+      "word": "of",
+      "start": 40.78,
+      "end": 41.04
+    },
+    {
+      "word": "interesting.",
+      "start": 41.04,
+      "end": 41.14
+    },
+    {
+      "word": "And",
+      "start": 41.88,
+      "end": 41.9
+    },
+    {
+      "word": "developers",
+      "start": 41.9,
+      "end": 42.34
+    },
+    {
+      "word": "are",
+      "start": 42.34,
+      "end": 42.64
+    },
+    {
+      "word": "free.",
+      "start": 42.64,
+      "end": 42.76
+    },
+    {
+      "word": "Dev",
+      "start": 44.2,
+      "end": 44.42
+    },
+    {
+      "word": "Velocity",
+      "start": 44.42,
+      "end": 44.58
+    },
+    {
+      "word": "is",
+      "start": 44.58,
+      "end": 44.8
+    },
+    {
+      "word": "interesting",
+      "start": 44.8,
+      "end": 45.08
+    },
+    {
+      "word": "because",
+      "start": 45.08,
+      "end": 45.38
+    },
+    {
+      "word": "then",
+      "start": 45.38,
+      "end": 45.78
+    },
+    {
+      "word": "you've",
+      "start": 45.78,
+      "end": 46.18
+    },
+    {
+      "word": "got",
+      "start": 46.18,
+      "end": 46.3
+    },
+    {
+      "word": "statistics.",
+      "start": 46.3,
+      "end": 46.84
+    },
+    {
+      "word": "So",
+      "start": 46.9,
+      "end": 47.06
+    },
+    {
+      "word": "you",
+      "start": 47.06,
+      "end": 47.16
+    },
+    {
+      "word": "can",
+      "start": 47.16,
+      "end": 47.38
+    },
+    {
+      "word": "say,",
+      "start": 47.38,
+      "end": 47.74
+    },
+    {
+      "word": "let's",
+      "start": 47.98,
+      "end": 48.16
+    },
+    {
+      "word": "say",
+      "start": 48.16,
+      "end": 48.26
+    },
+    {
+      "word": "you've",
+      "start": 48.26,
+      "end": 48.42
+    },
+    {
+      "word": "got",
+      "start": 48.42,
+      "end": 48.5
+    },
+    {
+      "word": "a",
+      "start": 48.5,
+      "end": 48.7
+    },
+    {
+      "word": "10",
+      "start": 48.7,
+      "end": 48.82
+    },
+    {
+      "word": "minute",
+      "start": 48.82,
+      "end": 49.04
+    },
+    {
+      "word": "build",
+      "start": 49.04,
+      "end": 49.48
+    },
+    {
+      "word": "time",
+      "start": 49.48,
+      "end": 49.9
+    },
+    {
+      "word": "for",
+      "start": 49.9,
+      "end": 50.44
+    },
+    {
+      "word": "everyone",
+      "start": 50.44,
+      "end": 50.8
+    },
+    {
+      "word": "on",
+      "start": 50.8,
+      "end": 50.98
+    },
+    {
+      "word": "the",
+      "start": 50.98,
+      "end": 51.18
+    },
+    {
+      "word": "team",
+      "start": 51.18,
+      "end": 51.42
+    },
+    {
+      "word": "when",
+      "start": 51.42,
+      "end": 51.66
+    },
+    {
+      "word": "they",
+      "start": 51.66,
+      "end": 51.88
+    },
+    {
+      "word": "build",
+      "start": 51.88,
+      "end": 52.06
+    },
+    {
+      "word": "locally.",
+      "start": 52.06,
+      "end": 52.42
+    },
+    {
+      "word": "Now",
+      "start": 52.72,
+      "end": 52.9
+    },
+    {
+      "word": "you",
+      "start": 52.9,
+      "end": 53.02
+    },
+    {
+      "word": "have",
+      "start": 53.02,
+      "end": 53.2
+    },
+    {
+      "word": "stats",
+      "start": 53.2,
+      "end": 53.48
+    },
+    {
+      "word": "for",
+      "start": 53.48,
+      "end": 53.76
+    },
+    {
+      "word": "how",
+      "start": 53.76,
+      "end": 54.04
+    },
+    {
+      "word": "long",
+      "start": 54.04,
+      "end": 54.18
+    },
+    {
+      "word": "the",
+      "start": 54.18,
+      "end": 54.36
+    },
+    {
+      "word": "build",
+      "start": 54.36,
+      "end": 54.52
+    },
+    {
+      "word": "takes,",
+      "start": 54.52,
+      "end": 54.82
+    },
+    {
+      "word": "how",
+      "start": 55.08,
+      "end": 55.42
+    },
+    {
+      "word": "frequently",
+      "start": 55.42,
+      "end": 55.9
+    },
+    {
+      "word": "your",
+      "start": 55.9,
+      "end": 56.18
+    },
+    {
+      "word": "developers",
+      "start": 56.18,
+      "end": 56.56
+    },
+    {
+      "word": "run",
+      "start": 56.56,
+      "end": 56.96
+    },
+    {
+      "word": "that",
+      "start": 56.96,
+      "end": 57.3
+    },
+    {
+      "word": "build,",
+      "start": 57.3,
+      "end": 57.58
+    },
+    {
+      "word": "and",
+      "start": 58.06,
+      "end": 58.06
+    },
+    {
+      "word": "then",
+      "start": 58.06,
+      "end": 58.16
+    },
+    {
+      "word": "all",
+      "start": 58.16,
+      "end": 58.64
+    },
+    {
+      "word": "you",
+      "start": 58.64,
+      "end": 59.02
+    },
+    {
+      "word": "have",
+      "start": 59.02,
+      "end": 59.18
+    },
+    {
+      "word": "to",
+      "start": 59.18,
+      "end": 59.34
+    },
+    {
+      "word": "do",
+      "start": 59.34,
+      "end": 59.52
+    },
+    {
+      "word": "is",
+      "start": 59.52,
+      "end": 59.78
+    },
+    {
+      "word": "times",
+      "start": 59.78,
+      "end": 60.04
+    },
+    {
+      "word": "that",
+      "start": 60.04,
+      "end": 60.36
+    },
+    {
+      "word": "by",
+      "start": 60.36,
+      "end": 60.6
+    },
+    {
+      "word": "your",
+      "start": 60.6,
+      "end": 60.94
+    },
+    {
+      "word": "average",
+      "start": 60.94,
+      "end": 61.2
+    },
+    {
+      "word": "developer",
+      "start": 61.2,
+      "end": 61.56
+    },
+    {
+      "word": "salary",
+      "start": 61.56,
+      "end": 62.08
+    },
+    {
+      "word": "and",
+      "start": 62.08,
+      "end": 62.62
+    },
+    {
+      "word": "figure",
+      "start": 62.62,
+      "end": 62.86
+    },
+    {
+      "word": "out,",
+      "start": 62.86,
+      "end": 63.2
+    },
+    {
+      "word": "oh",
+      "start": 63.2,
+      "end": 63.48
+    },
+    {
+      "word": "my",
+      "start": 63.48,
+      "end": 63.76
+    },
+    {
+      "word": "God,",
+      "start": 63.76,
+      "end": 63.94
+    },
+    {
+      "word": "we",
+      "start": 64.14,
+      "end": 64.14
+    },
+    {
+      "word": "are",
+      "start": 64.14,
+      "end": 64.28
+    },
+    {
+      "word": "losing",
+      "start": 64.28,
+      "end": 64.62
+    },
+    {
+      "word": "so",
+      "start": 64.62,
+      "end": 65.16
+    },
+    {
+      "word": "much",
+      "start": 65.16,
+      "end": 65.44
+    },
+    {
+      "word": "money",
+      "start": 65.44,
+      "end": 66.0
+    },
+    {
+      "word": "just",
+      "start": 66.0,
+      "end": 66.56
+    },
+    {
+      "word": "because",
+      "start": 66.56,
+      "end": 66.9
+    },
+    {
+      "word": "we",
+      "start": 66.9,
+      "end": 67.16
+    },
+    {
+      "word": "haven't",
+      "start": 67.16,
+      "end": 67.44
+    },
+    {
+      "word": "invested",
+      "start": 67.44,
+      "end": 67.88
+    },
+    {
+      "word": "a",
+      "start": 67.88,
+      "end": 68.14
+    },
+    {
+      "word": "couple",
+      "start": 68.14,
+      "end": 68.26
+    },
+    {
+      "word": "of",
+      "start": 68.26,
+      "end": 68.5
+    },
+    {
+      "word": "days",
+      "start": 68.5,
+      "end": 68.88
+    },
+    {
+      "word": "in",
+      "start": 68.88,
+      "end": 69.4
+    },
+    {
+      "word": "figuring",
+      "start": 69.4,
+      "end": 69.66
+    },
+    {
+      "word": "out",
+      "start": 69.66,
+      "end": 70.18
+    },
+    {
+      "word": "how",
+      "start": 70.18,
+      "end": 70.36
+    },
+    {
+      "word": "to",
+      "start": 70.36,
+      "end": 70.58
+    },
+    {
+      "word": "reduce.",
+      "start": 70.58,
+      "end": 70.76
+    }
+  ]
+}
