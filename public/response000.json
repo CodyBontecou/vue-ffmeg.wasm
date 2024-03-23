@@ -1,0 +1,44 @@
+{
+  "data": [
+    {
+      "start": 0,
+      "end": 30.22,
+      "text": "All right, welcome to Happy Path programming. Beautiful spring weather up here in Crested Butte, Colorado. Just loving it. So we're not like a footist no coming this weekend or something. Well, and we're not worried about it getting too hot like apparently you are. So yeah."
+    },
+    {
+      "start": 30.22,
+      "end": 60.94,
+      "text": "Yeah, a little overcast today for San Diego, but that's okay. I think it's just kind of the morning thing. I think it'll clear up as the day goes on. Yeah. So today we have with us April Winsell. Did I get that right? - Yes, it rhymes with pencil. (laughs) - Awesome. And I, you know, we've never met in person, which hopefully we get to do that somewhere along the way. But I've been following you on Twitter and seeing so much great stuff from you around the way that I'm looking at it, and I'm, we'll hear from you."
+    },
+    {
+      "start": 60.94,
+      "end": 90.44,
+      "text": "You can see it. But it's like, how do we help programmers to, to treat each other more kindly in their interactions? And I love that because I think as programmers, we sometimes struggle with, you know, bringing kindness to what we do in our energy. Our field also tends to attract neurodivergent folks. It's a better fit. And then they don't always get the kind of support and training that they need to learn to communicate well."
+    },
+    {
+      "start": 90.44,
+      "end": 120.68,
+      "text": "So I guess that's what's been cool from what I've seen from you is you're trying to help give programmers some tools for how to communicate more kindly, more compassionately and effectively. That's right. Yes. So I want to hear all about it, but first before we dive into that work, what's your background? Tell us about you. Sure. So I started programming in high school. So I was kind of like one of those typical stories."
+    },
+    {
+      "start": 120.68,
+      "end": 150.66,
+      "text": "Like even though I don't look like the typical story, I actually kind of was in that I loved playing video games growing up. And so I was like, hey, I can actually make these. And so I started programming in C++ in high school and really enjoyed it. Like it really felt like just being able to create these worlds, like these virtual worlds and everything, and just felt very empowering and fun."
+    },
+    {
+      "start": 150.66,
+      "end": 180.52,
+      "text": "So I went on to continue studying it in college, and then I moved to the Bay Area, which is a good place to find some tech jobs. >> It's kind of our universe. >> Yep, and I did. I did that for about 10 years in the Bay Area, worked at some startups and larger companies and moved around a lot. Job hopped before it was cool. Now it's kind of cool. I did it before it was cool."
+    },
+    {
+      "start": 180.52,
+      "end": 210.68,
+      "text": "Right. - And I got it, you know, diverse range of experiences at companies and, you know, this will tie into what we talk about. But I noticed that at all these companies, like they were different sizes, different technologies we were using, like Ruby on Rails, like Python, C#, C++, like all over the board, JavaScript, I kind of did all kinds of stuff, iOS, Android."
+    },
+    {
+      "start": 210.68,
+      "end": 240.04,
+      "text": "And I noticed though, there were some common themes in terms of the problems we'd run into on Teams. And it turned out to not really be the quote-unquote technical stuff so much as the human stuff. And you know, you kind of alluded to it in terms of the communication on teams and making that more effective. But that's really only one piece of it because it's also about, you know, how we're treating ourselves like when we do make a mistake or when we do, you know, our"
+    }
+  ]
+}

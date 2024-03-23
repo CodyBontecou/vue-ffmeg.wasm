@@ -2,32 +2,39 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import type { LogEvent } from '@ffmpeg/ffmpeg/dist/esm/types'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
-import { onMounted, ref } from 'vue'
 import { saveAs } from 'file-saver'
-import data from '../../public/test.json'
-import { useFileSystemAccess } from '@vueuse/core'
+
+import responseJson from '../../public/response000.json'
+import transcriptData from '../../public/transcript000.json'
+
+interface ClipMetaData {
+  start: number
+  end: number
+  text: string
+}
+
+interface ChatGPTResponse {
+  data: ClipMetaData[]
+}
+
+interface TranscriptResponse {
+  data: TranscriptData[]
+}
+
+interface TranscriptData {
+  text: string
+  timestamp: number[]
+}
 
 const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm'
-const {
-  isSupported,
-  file,
-  fileName,
-  fileMIME,
-  fileSize,
-  fileLastModified,
-  create,
-  open,
-  save,
-  updateData
-} = useFileSystemAccess()
-
 const ffmpeg = new FFmpeg()
-const message = ref('Click Start to Transcode')
-let video = ref('')
 
-ffmpeg.on('log', ({ message: msg }: LogEvent) => {
-  message.value = msg
-  console.log(msg)
+ffmpeg.on('log', ({ message: msg, type }: LogEvent) => {
+  if (type === 'error') {
+    console.error(msg)
+  } else {
+    console.log(msg)
+  }
 })
 
 await ffmpeg.load({
@@ -36,53 +43,42 @@ await ffmpeg.load({
   workerURL: await toBlobURL(`${baseURL}/ffmpeg-core.worker.js`, 'text/javascript')
 })
 
-const OUT_FILE_NAME = 'output.mp4'
-const FINAL_OUTPUT_FILE = 'final.mkv'
-const FONT_FILE = 'Roboto-Regular.ttf'
-const AUDIO_FILE = 'audio.wav'
+const FINAL_OUTPUT_FILE = 'final.mp4'
+
+const RECORDING_FILE = 'output000.mp4'
+await ffmpeg.writeFile(RECORDING_FILE, await fetchFile('/output000.mp4'))
 
 // Fetch and write the font file for drawtext filter
+const FONT_FILE = 'Roboto-Regular.ttf'
 await ffmpeg.writeFile(FONT_FILE, await fetchFile('/Roboto-Regular.ttf'))
 
-// Fetch and write the audio file
-await ffmpeg.writeFile(AUDIO_FILE, await fetchFile('/split_20.wav'))
-
-type WordInfo = {
-  word: string
-  start: number
-  end: number
-}
-
-const generateFfmpegCommands = (data: { word: string; start: number; end: number }[]) => {
-  const baseFfmpegCmd = ['-i', OUT_FILE_NAME, '-i', AUDIO_FILE]
+const generateFfmpegCommands = (transcriptData: TranscriptData[], recordingFilePath: string) => {
+  const baseFfmpegCmd = ['-i', recordingFilePath]
   const filterComplexCmd: string[] = []
   const maxChars = 15 // Limit by character count
 
   // Helper function to chunk data by character count
-  const chunkDataByCharCount = (
-    data: { word: string; start: number; end: number }[],
-    maxChars: number
-  ) => {
+  const chunkDataByCharCount = (transcriptData: TranscriptData[], maxChars: number) => {
     const chunks: { text: string; start: number; end: number }[] = []
     let currentChunk = ''
-    let chunkStart = data[0]?.start || 0
+    let chunkStart = transcriptData[0]?.timestamp[0] || 0
     let chunkEnd = 0
 
-    data.forEach((item, index) => {
-      if (currentChunk.length + item.word.length + (currentChunk.length > 0 ? 1 : 0) <= maxChars) {
+    transcriptData.forEach((item, index) => {
+      if (currentChunk.length + item.text.length + (currentChunk.length > 0 ? 1 : 0) <= maxChars) {
         // Add a space before the word if it's not the first word in the chunk
-        currentChunk += (currentChunk.length > 0 ? ' ' : '') + item.word
-        chunkEnd = item.end
+        currentChunk += (currentChunk.length > 0 ? ' ' : '') + item.text
+        chunkEnd = item.timestamp[1]
       } else {
         // Save the current chunk and reset for the next chunk
         chunks.push({ text: currentChunk, start: chunkStart, end: chunkEnd })
-        currentChunk = item.word
-        chunkStart = item.start
-        chunkEnd = item.end
+        currentChunk = item.text
+        chunkStart = item.timestamp[0]
+        chunkEnd = item.timestamp[1]
       }
 
       // Ensure the last chunk is added
-      if (index === data.length - 1) {
+      if (index === transcriptData.length - 1) {
         chunks.push({ text: currentChunk, start: chunkStart, end: chunkEnd })
       }
     })
@@ -90,7 +86,7 @@ const generateFfmpegCommands = (data: { word: string; start: number; end: number
     return chunks
   }
 
-  const textChunks = chunkDataByCharCount(data, maxChars)
+  const textChunks = chunkDataByCharCount(transcriptData, maxChars)
 
   // Generate drawtext commands for each chunk
   textChunks.forEach((chunk) => {
@@ -101,17 +97,17 @@ const generateFfmpegCommands = (data: { word: string; start: number; end: number
 
   const complexFilterStr = filterComplexCmd.join(',')
 
+  // const finalCmd = [...baseFfmpegCmd, '-filter_complex', complexFilterStr, FINAL_OUTPUT_FILE]
   const finalCmd = [
     ...baseFfmpegCmd,
     '-filter_complex',
     complexFilterStr,
-    '-map',
-    '0:v', // Map video stream(s) from the first input
-    '-map',
-    '1:a', // Map audio stream(s) from the second input
+    '-c:v',
+    'libx264',
+    '-crf',
+    '23',
     '-c:a',
-    'copy', // Copy audio codec, assuming no filters are applied to audio
-    '-shortest', // Finish encoding when the shortest stream ends
+    'copy',
     FINAL_OUTPUT_FILE
   ]
 
@@ -120,61 +116,101 @@ const generateFfmpegCommands = (data: { word: string; start: number; end: number
   return finalCmd
 }
 
-const generateCreateVideoCommands = (data: { word: string; start: number; end: number }[]) => {
-  const videoLength = data[data.length - 1].end // Duration of the video
-  const videoDimensions = '540x960'
-  const ffmpegCommandArray = [
-    '-f',
-    'lavfi',
-    '-i',
-    `color=c=white:s=${videoDimensions}:d=${videoLength}`,
-    '-c:v',
-    'libx264',
-    '-t',
-    `${videoLength}`,
-    '-pix_fmt',
-    'yuv420p',
-    OUT_FILE_NAME
-  ]
-
-  return ffmpegCommandArray
-}
-
 async function generateVideo() {
-  const videoCmd = generateCreateVideoCommands(data.word_segments)
-  await ffmpeg.exec(videoCmd)
+  const cutLength = {
+    start: responseJson.data[0].start,
+    end: responseJson.data[0].end
+  }
 
-  const ffmpegCommand = await generateFfmpegCommands(data.word_segments)
+  const filePath = await cutRecordingsFile(RECORDING_FILE, cutLength.start, cutLength.end)
+  await fetchFile(filePath)
+
+  // TODO: This is not saving the segmented files
+  // await chopIntoSegments(RECORDING_FILE)
+
+  const ffmpegCommand = await generateFfmpegCommands(transcriptData, filePath)
+  console.log('pre: ffmpegCommand: ', ffmpegCommand)
   await ffmpeg.exec(ffmpegCommand)
+
+  console.log('post: ffmpegCommand: ', ffmpegCommand)
 
   const out_file = await ffmpeg.readFile(FINAL_OUTPUT_FILE)
   const blob = new Blob([(out_file as Uint8Array).buffer], { type: 'video/mp4' })
   saveAs(blob, FINAL_OUTPUT_FILE)
-  video.value = URL.createObjectURL(
-    new Blob([(out_file as Uint8Array).buffer], { type: 'video/mp4' })
-  )
+
+  console.log('saved final output')
 }
 
-const SPLIT_20 = 'split_20.wav'
-await ffmpeg.writeFile(SPLIT_20, await fetchFile('/split_20.wav'))
-
-const cutAudioFile = async (filePath: string, start: string, end: string) => {
-  // ffmpeg -i song.wav -ss 00:02:15 -to 00:04:45 -c copy cut_song.wav
-  const args = ['-i', filePath, '-ss', start, '-to', end, '-c', 'copy', 'cut_song.wav']
+const cutRecordingsFile = async (filePath: string, start: number, end: number) => {
+  // ffmpeg -i output000.mp4 -ss 00:02:15 -to 00:04:45 cut-output000.mp4
+  const newFilePath = 'cut-' + filePath
+  const args = [
+    '-ss',
+    start.toString(),
+    '-to',
+    end.toString(),
+    '-i',
+    filePath,
+    '-c',
+    'copy',
+    newFilePath
+  ]
   await ffmpeg.exec(args)
 
-  const out_file = await ffmpeg.readFile('cut_song.wav')
-  const blob = new Blob([(out_file as Uint8Array).buffer], { type: 'wav' })
-  saveAs(blob, 'cut_song.wav')
+  // const out_file = await ffmpeg.readFile(newFilePath)
+
+  // const fileType = filePath.split('.').pop()
+  // const mimeType = `video/${fileType}`
+
+  // const blob = new Blob([(out_file as Uint8Array).buffer], { type: mimeType })
+  // saveAs(blob, newFilePath)
+
+  return newFilePath
+}
+
+// await cutRecordingTest()
+
+const chopIntoSegments = async (filePath: string) => {
+  // ffmpeg -i input.mp4 -c copy -f segment -segment_time 200 -reset_timestamps 1
+  const args = [
+    '-i',
+    filePath,
+    '-c',
+    'copy',
+    '-f',
+    'segment',
+    '-segment_time',
+    '200',
+    'output%03d.mp4'
+  ]
+
+  await ffmpeg.exec(args)
+
+  const newFilePath = 'output002.mp4'
+
+  const fileType = filePath.split('.')[1]
+  const out_file = await ffmpeg.readFile(newFilePath)
+  const blob = new Blob([(out_file as Uint8Array).buffer], { type: fileType })
+  saveAs(blob, newFilePath)
+
+  await ffmpeg.writeFile(newFilePath, await fetchFile(newFilePath))
+
+  // return newFilePath
 }
 </script>
 
 <template>
-  <div class="video-container">
-    <video :src="video" controls />
-  </div>
-  <br />
   <button @click="generateVideo">Start</button>
-  <button @click="() => cutAudioFile('/split_20.wav', '158.96', '173.0')">Cut Audio File</button>
-  <p>{{ message }}</p>
+  <!-- <button
+    @click="() => cutFileLength(AUDIO_FILE, cutLength.start.toString(), cutLength.end.toString())"
+  >
+    Cut Audio File
+  </button>
+  <button
+    @click="
+      () => cutFileLength(RECORDING_FILE, cutLength.start.toString(), cutLength.end.toString())
+    "
+  >
+    Cut Recording File
+  </button> -->
 </template>
