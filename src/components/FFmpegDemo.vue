@@ -2,11 +2,24 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg'
 import type { LogEvent } from '@ffmpeg/ffmpeg/dist/esm/types'
 import { fetchFile, toBlobURL } from '@ffmpeg/util'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { saveAs } from 'file-saver'
 import data from '../../public/test.json'
+import { useFileSystemAccess } from '@vueuse/core'
 
 const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm'
+const {
+  isSupported,
+  file,
+  fileName,
+  fileMIME,
+  fileSize,
+  fileLastModified,
+  create,
+  open,
+  save,
+  updateData
+} = useFileSystemAccess()
 
 const ffmpeg = new FFmpeg()
 const message = ref('Click Start to Transcode')
@@ -32,7 +45,7 @@ const AUDIO_FILE = 'audio.wav'
 await ffmpeg.writeFile(FONT_FILE, await fetchFile('/Roboto-Regular.ttf'))
 
 // Fetch and write the audio file
-await ffmpeg.writeFile(AUDIO_FILE, await fetchFile('/audio.wav'))
+await ffmpeg.writeFile(AUDIO_FILE, await fetchFile('/split_20.wav'))
 
 type WordInfo = {
   word: string
@@ -141,6 +154,19 @@ async function generateVideo() {
     new Blob([(out_file as Uint8Array).buffer], { type: 'video/mp4' })
   )
 }
+
+const SPLIT_20 = 'split_20.wav'
+await ffmpeg.writeFile(SPLIT_20, await fetchFile('/split_20.wav'))
+
+const cutAudioFile = async (filePath: string, start: string, end: string) => {
+  // ffmpeg -i song.wav -ss 00:02:15 -to 00:04:45 -c copy cut_song.wav
+  const args = ['-i', filePath, '-ss', start, '-to', end, '-c', 'copy', 'cut_song.wav']
+  await ffmpeg.exec(args)
+
+  const out_file = await ffmpeg.readFile('cut_song.wav')
+  const blob = new Blob([(out_file as Uint8Array).buffer], { type: 'wav' })
+  saveAs(blob, 'cut_song.wav')
+}
 </script>
 
 <template>
@@ -149,10 +175,6 @@ async function generateVideo() {
   </div>
   <br />
   <button @click="generateVideo">Start</button>
+  <button @click="() => cutAudioFile('/split_20.wav', '158.96', '173.0')">Cut Audio File</button>
   <p>{{ message }}</p>
 </template>
-
-<style scoped>
-.video-container {
-}
-</style>
