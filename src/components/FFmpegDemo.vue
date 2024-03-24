@@ -28,6 +28,10 @@ interface TranscriptData {
 
 const baseURL = 'https://unpkg.com/@ffmpeg/core-mt@0.12.6/dist/esm'
 const ffmpeg = new FFmpeg()
+const cutLength = {
+  start: responseJson.data[1].start,
+  end: responseJson.data[1].end
+}
 
 ffmpeg.on('log', ({ message: msg, type }: LogEvent) => {
   if (type === 'error') {
@@ -57,14 +61,29 @@ const generateFfmpegCommands = (transcriptData: TranscriptData[], recordingFileP
   const filterComplexCmd: string[] = []
   const maxChars = 15 // Limit by character count
 
+  const extractSegments = (
+    transcript: TranscriptData[],
+    start: number,
+    end: number
+  ): TranscriptData[] => {
+    return transcript.filter((segment) => {
+      // Check if the segment's start time is within the given range.
+      return segment.timestamp[0] >= start && segment.timestamp[0] <= end
+    })
+  }
+
   // Helper function to chunk data by character count
   const chunkDataByCharCount = (transcriptData: TranscriptData[], maxChars: number) => {
-    const chunks: { text: string; start: number; end: number }[] = []
+    const chunks: ClipMetaData[] = []
     let currentChunk = ''
-    let chunkStart = transcriptData[0]?.timestamp[0] || 0
-    let chunkEnd = 0
+    let chunkStart = cutLength.start
+    let chunkEnd = cutLength.end
 
-    transcriptData.forEach((item, index) => {
+    const transcript = extractSegments(transcriptData, cutLength.start, cutLength.end)
+    console.log('transcriptData: ', transcriptData)
+    console.log('transcript: ', transcript)
+
+    transcript.forEach((item, index) => {
       if (currentChunk.length + item.text.length + (currentChunk.length > 0 ? 1 : 0) <= maxChars) {
         // Add a space before the word if it's not the first word in the chunk
         currentChunk += (currentChunk.length > 0 ? ' ' : '') + item.text
@@ -91,7 +110,10 @@ const generateFfmpegCommands = (transcriptData: TranscriptData[], recordingFileP
   // Generate drawtext commands for each chunk
   textChunks.forEach((chunk) => {
     const formattedWord = chunk.text.replace("'", '')
-    const drawtextCmd = `drawtext=fontfile=Roboto-Regular.ttf:text='${formattedWord}':enable='between(t,${chunk.start},${chunk.end})':x=(w-tw)/2:y=7*(h-th)/8:fontsize=48:fontcolor=white:box=1:boxcolor=black@0.5:boxborderw=5`
+
+    const drawtextCmd = `drawtext=fontfile=Roboto-Regular.ttf:text='${formattedWord}':enable='between(t,${chunk.start - cutLength.start},${chunk.start - cutLength.start + chunk.end - chunk.start})':x=(w-tw)/2:y=(h-th)/2:fontsize=96:fontcolor=white:box=1:boxcolor=black@0.8:boxborderw=4`
+    // const drawtextCmd = `drawtext=fontfile=Roboto-Regular.ttf:text='${formattedWord}':enable='between(t,${chunk.start},${chunk.end})':x=(w-tw)/2:y=7*(h-th)/8:fontsize=48:fontcolor=white:box=1:boxcolor=black@0.5:boxborderw=5`
+
     filterComplexCmd.push(drawtextCmd)
   })
 
@@ -117,11 +139,6 @@ const generateFfmpegCommands = (transcriptData: TranscriptData[], recordingFileP
 }
 
 async function generateVideo() {
-  const cutLength = {
-    start: responseJson.data[0].start,
-    end: responseJson.data[0].end
-  }
-
   const filePath = await cutRecordingsFile(RECORDING_FILE, cutLength.start, cutLength.end)
   await fetchFile(filePath)
 
